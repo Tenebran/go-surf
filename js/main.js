@@ -1,169 +1,186 @@
-$(function () {
-  $('.header__slider').slick({
-    infinite: true,
-    fade: true,
-    prevArrow:
-      '<img class="slider-arrows slider-arrows-left" src="./img/arrow-left.svg" alt="arrow"/>',
-    nextArrow:
-      '<img class="slider-arrows slider-arrows-right" src="./img/arrow-right.svg" alt="arrow"/>',
-    asNavFor: '.slider-dotsdotshead',
-  });
-
-  $('.slider-dotsdotshead').slick({
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    asNavFor: '.header__slider',
-    responsive: [
-      {
-        breakpoint: 900,
-        settings: 'unslick',
-      },
-    ],
-  });
-
-  $('.serf-slider').slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    prevArrow:
-      '<img class="slider-arrows slider-arrows-left" src="./img/arrow-left.svg" alt="arrow"/>',
-    nextArrow:
-      '<img class="slider-arrows slider-arrows-right" src="./img/arrow-right.svg" alt="arrow"/>',
-    asNavFor: '.slider-map',
-    responsive: [
-      {
-        breakpoint: 1102,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 900,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 720,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
-        },
-      },
-      {
-        breakpoint: 425,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: false,
-        },
-      },
-    ],
-  });
-
-  $('.slider-map').slick({
-    slidesToShow: 7,
-    slidesToScroll: 1,
-    arrows: false,
-    asNavFor: '.serf-slider',
-    focusOnSelect: true,
-    responsive: [
-      {
-        breakpoint: 1102,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: false,
-          centerMode: true,
-        },
-      },
-      {
-        breakpoint: 1004,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          centerMode: true,
-        },
-      },
-      {
-        breakpoint: 720,
-        settings: {
-          slidesToShow: 1,
-          centerMode: true,
-        },
-      },
-    ],
-  });
-
-  $('.holder__slider, .shop__slider').slick({
-    infinite: true,
-    fade: true,
-    prevArrow:
-      '<img class="slider-arrows slider-arrows-left" src="./img/arrow-left.svg" alt="arrow"/>',
-    nextArrow:
-      '<img class="slider-arrows slider-arrows-right" src="./img/arrow-right.svg" alt="arrow"/>',
-  });
-
-  $(
-    '<div class="quantity-nav"><div class="quantity-button quantity-up"><img src="./img/plus.svg" alt="" /></div><div class="quantity-button quantity-down"><img src="./img/minus.svg" alt="" /></div></div>'
-  ).insertAfter('.quantity input');
-  $('.quantity').each(function () {
-    var spinner = $(this),
-      input = spinner.find('input[type="number"]'),
-      btnUp = spinner.find('.quantity-up'),
-      btnDown = spinner.find('.quantity-down'),
-      min = input.attr('min'),
-      max = input.attr('max');
-
-    btnUp.click(function () {
-      var oldValue = parseFloat(input.val());
-      if (oldValue >= max) {
-        var newVal = oldValue;
-      } else {
-        var newVal = oldValue + 1;
-      }
-      spinner.find('input').val(newVal);
-      spinner.find('input').trigger('change');
+window.addEventListener('load', event => {
+  $(function () {
+    $('.header__slider').slick({
+      infinite: true,
+      fade: true,
+      prevArrow:
+        '<img class="slider-arrows slider-arrows-left" src="./img/arrow-left.svg" alt="arrow"/>',
+      nextArrow:
+        '<img class="slider-arrows slider-arrows-right" src="./img/arrow-right.svg" alt="arrow"/>',
+      asNavFor: '.slider-dotsdotshead',
     });
 
-    btnDown.click(function () {
-      var oldValue = parseFloat(input.val());
-      if (oldValue <= min) {
-        var newVal = oldValue;
-      } else {
-        var newVal = oldValue - 1;
-      }
-      spinner.find('input').val(newVal);
-      spinner.find('input').trigger('change');
+    $('.slider-dotsdotshead').slick({
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      asNavFor: '.header__slider',
+      responsive: [
+        {
+          breakpoint: 900,
+          settings: 'unslick',
+        },
+      ],
     });
-  });
 
-  $('.surboard-box__circle').on('click', function () {
-    $(this).toggleClass('active');
-  });
+    $('.serf-slider').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      prevArrow:
+        '<img class="slider-arrows slider-arrows-left" src="./img/arrow-left.svg" alt="arrow"/>',
+      nextArrow:
+        '<img class="slider-arrows slider-arrows-right" src="./img/arrow-right.svg" alt="arrow"/>',
+      asNavFor: '.slider-map',
+      responsive: [
+        {
+          breakpoint: 1102,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: false,
+          },
+        },
+        {
+          breakpoint: 900,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          },
+        },
+        {
+          breakpoint: 720,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerMode: true,
+          },
+        },
+        {
+          breakpoint: 425,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            centerMode: false,
+          },
+        },
+      ],
+    });
 
-  let summ =
-    $('.nights').val() * $('.summ').data('nights') +
-    ($('.guests').val() - 1) * $('.summ').data('guests');
+    $('.slider-map').slick({
+      slidesToShow: 7,
+      slidesToScroll: 1,
+      arrows: false,
+      asNavFor: '.serf-slider',
+      focusOnSelect: true,
+      responsive: [
+        {
+          breakpoint: 1102,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: false,
+            centerMode: true,
+          },
+        },
+        {
+          breakpoint: 1004,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            centerMode: true,
+          },
+        },
+        {
+          breakpoint: 720,
+          settings: {
+            slidesToShow: 1,
+            centerMode: true,
+          },
+        },
+      ],
+    });
 
-  $('.summ').html('$' + summ);
+    $('.holder__slider, .shop__slider').slick({
+      infinite: true,
+      fade: true,
+      prevArrow:
+        '<img class="slider-arrows slider-arrows-left" src="./img/arrow-left.svg" alt="arrow"/>',
+      nextArrow:
+        '<img class="slider-arrows slider-arrows-right" src="./img/arrow-right.svg" alt="arrow"/>',
+    });
 
-  $('.quantity-button').on('click', function () {
+    $(
+      '<div class="quantity-nav"><div class="quantity-button quantity-up"><img src="./img/plus.svg" alt="" /></div><div class="quantity-button quantity-down"><img src="./img/minus.svg" alt="" /></div></div>'
+    ).insertAfter('.quantity input');
+    $('.quantity').each(function () {
+      var spinner = $(this),
+        input = spinner.find('input[type="number"]'),
+        btnUp = spinner.find('.quantity-up'),
+        btnDown = spinner.find('.quantity-down'),
+        min = input.attr('min'),
+        max = input.attr('max');
+
+      btnUp.click(function () {
+        var oldValue = parseFloat(input.val());
+        if (oldValue >= max) {
+          var newVal = oldValue;
+        } else {
+          var newVal = oldValue + 1;
+        }
+        spinner.find('input').val(newVal);
+        spinner.find('input').trigger('change');
+      });
+
+      btnDown.click(function () {
+        var oldValue = parseFloat(input.val());
+        if (oldValue <= min) {
+          var newVal = oldValue;
+        } else {
+          var newVal = oldValue - 1;
+        }
+        spinner.find('input').val(newVal);
+        spinner.find('input').trigger('change');
+      });
+    });
+
+    $('.surboard-box__circle').on('click', function () {
+      $(this).toggleClass('active');
+    });
+
     let summ =
       $('.nights').val() * $('.summ').data('nights') +
       ($('.guests').val() - 1) * $('.summ').data('guests');
 
     $('.summ').html('$' + summ);
+
+    $('.quantity-button').on('click', function () {
+      let summ =
+        $('.nights').val() * $('.summ').data('nights') +
+        ($('.guests').val() - 1) * $('.summ').data('guests');
+
+      $('.summ').html('$' + summ);
+    });
+
+    $('.menu-btn').on('click', function () {
+      $('.menu').toggleClass('active');
+    });
   });
 
-  $('.menu-btn').on('click', function () {
-    $('.menu').toggleClass('active');
-  });
+  let userLocation = document.querySelector('.header__location');
+  $.get(
+    'https://ipinfo.io',
+    function (response) {
+      // console.log(response.city, response.country);
+      userLocation.innerHTML = response.city;
+    },
+    'jsonp'
+  );
+  let date = new Date();
+  let headerDate = document.querySelector('.header__date');
+  headerDate.innerHTML = `${date.getUTCDate()} <span > ${
+    date.getMonth() + 1
+  } | ${date.getFullYear()}</span>`;
+
+  new WOW().init();
 });
-
-new WOW().init();
